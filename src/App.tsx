@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles"; // Assurez-vous d'importer Material-UI
+import CssBaseline from "@mui/material/CssBaseline";
+import CaisseEnregistreuse from "./CaisseEnregistreuse";
 
-function App() {
+// Création d'un thème personnalisé, si nécessaire
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1976d2" // Couleur primaire par défaut
+    },
+    secondary: {
+      main: "#dc004e" // Couleur secondaire par
+    }
+  }
+});
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      {/* CssBaseline applique un reset CSS par défaut de Material-UI */}
+      <CssBaseline />
+      <div className="App">
+        <CaisseEnregistreuse />
+      </div>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
